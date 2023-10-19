@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './assets/styles/fonts.css';
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+h1{
+    font-family: 'PlusJakartaSans-Bold';
+}
+
+h2{
+    font-family: 'PlusJakartaSans-Bold';
+}
+
+h3{
+    font-family: 'PlusJakartaSans-Bold';
+}
+
+h4{
+    font-family: 'PlusJakartaSans-Bold';
+}
+
+h5{
+    font-family: 'PlusJakartaSans-SemiBold';
+}
+
+p{
+    font-family: 'PlusJakartaSans-Regular';
+}
+
+a{
+    font-family: 'PlusJakartaSans-Light';
+}
+
+li{
+    font-family: 'PlusJakartaSans-Light';
+}
+
+span{
+    font-family: 'PlusJakartaSans-Medium';
+}
+
+strong{
+    font-family: 'PlusJakartaSans-ExtraBold';
+}
