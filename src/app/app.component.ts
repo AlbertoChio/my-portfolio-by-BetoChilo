@@ -12,6 +12,7 @@ export class AppComponent {
     return this.darkMode();
   }
   showMenu = false;
+  processing=false;
   cards: { description: string; src: string }[] = [
     { src: 'assets/images/svg/angular-icon.svg', description: 'Angular' },
     { src: 'assets/images/svg/spring-3.svg', description: 'Java Spring' },
@@ -53,6 +54,10 @@ export class AppComponent {
   }
 
   contactFormSubmit(form: FormGroup) {
+    this.processing = true;
+    setTimeout(() => {
+      this.processing = false
+    }, 5000);
     debugger;
   }
 }

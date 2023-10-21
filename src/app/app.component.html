@@ -141,8 +141,8 @@
 
   <section>
     <div class="isolate bg-slate-200 px-6 py-24 dark:bg-slate-800 sm:py-32 lg:px-8">
-      <div class="mx-auto max-w-2xl text-center">
-        <h3 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      <div class="mx-auto max-w-2xl">
+        <h3 class="text-center text-2xl font-semibold text-gray-950 dark:text-slate-200 md:text-4xl">
           Contactame
         </h3>
       </div>
@@ -150,7 +150,7 @@
         class="mx-auto mt-16 max-w-xl sm:mt-20">
         <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div class="sm:col-span-2">
-            <label for="name" class="block text-sm font-semibold leading-6 text-gray-900">Nombre</label>
+            <label for="name" class="block text-sm font-semibold leading-6 text-gray-900 dark:text-slate-100">Nombre</label>
             <div class="mt-2.5">
               <input type="text" formControlName="name" name="name" id="name" autocomplete="name" [ngClass]="
                   contactForm.controls['name'].invalid
@@ -161,7 +161,7 @@
             </div>
           </div>
           <div class="sm:col-span-2">
-            <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Correo</label>
+            <label for="email" class="block text-sm font-semibold leading-6 text-gray-900 dark:text-slate-100">Correo</label>
             <div class="mt-2.5">
               <input type="email" formControlName="email" name="email" id="email" autocomplete="email" [ngClass]="
                   contactForm.controls['email'].invalid
@@ -172,22 +172,26 @@
             </div>
           </div>
           <div class="sm:col-span-2">
-            <label for="mensaje" class="block text-sm font-semibold leading-6 text-gray-900">Mensaje</label>
+            <label for="mensaje" class="block text-sm font-semibold leading-6 text-gray-900 dark:text-slate-100">Mensaje</label>
             <div class="mt-2.5">
               <textarea name="mensaje" formControlName="message" id="mensaje" rows="4" [ngClass]="
                   contactForm.controls['message'].invalid
                     ? 'ring-red-400'
                     : 'ring-gray-300'
                 "
-                class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"></textarea>
+                class="block max-h-[100px] min-h-[80px] w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"></textarea>
             </div>
           </div>
         </div>
         <div class="mt-10">
-          <button type="submit" [disabled]="contactForm.invalid"
-            class="block w-full rounded-md bg-slate-800 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:bg-slate-500 [&:not(:disabled)]:hover:bg-slate-600 [&:not(:disabled)]:focus-visible:outline-slate-700">
-            Enviar
+          <button type="submit" [disabled]="contactForm.invalid || processing"
+            class="flex justify-center w-full rounded-md bg-slate-800 dark:bg-stone-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:bg-slate-500 [&:not(:disabled)]:hover:bg-slate-600 [&:not(:disabled)]:focus-visible:outline-slate-700
+            dark:disabled:bg-stone-400 dark:[&:not(:disabled)]:hover:bg-stone-500 dark:[&:not(:disabled)]:focus-visible:outline-stone-600 ...">
+            <svg *ngIf="processing" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"></path></svg>
+
+            {{!processing?'Enviar':null}}
           </button>
+          
         </div>
       </form>
     </div>
