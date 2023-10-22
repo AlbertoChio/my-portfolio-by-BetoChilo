@@ -1,19 +1,56 @@
-import { Component, HostBinding, signal } from '@angular/core';
+import { Component, HostBinding, WritableSignal, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { fromEvent } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Beto_ChiLo_Port_Folio';
-  darkMode = signal<boolean>(false);
   @HostBinding('class.dark') get mode() {
     return this.darkMode();
   }
-  showMenu = false;
-  processing=false;
-  cards: { description: string; src: string }[] = [
+
+  darkMode = signal<boolean>(false);
+
+  currentSection = signal<
+    null | 'sobre-mi' | 'techs' | 'experiencia' | 'contacto'
+  >('sobre-mi');
+
+  sections?: NodeListOf<HTMLElement>;
+
+  eventSubscription = fromEvent(window, 'scroll').subscribe((e) => {
+    this.onscroll();
+  });
+
+  onscroll() {
+    debugger
+    let current: any = '';
+    this.sections?.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      if (scrollY >= sectionTop - 60) {
+        current = section.getAttribute('id');
+      }
+    });
+    this.currentSection.update((s) => {
+      if (s !== current && current !== '') {
+        return current;
+      }
+      if(current === ''){
+        return 'sobre-mi'
+      }
+      return s;
+    });
+  }
+
+  processing: WritableSignal<boolean> = signal<boolean>(false);
+
+  cards: WritableSignal<
+    {
+      description: string;
+      src: string;
+    }[]
+  > = signal<{ description: string; src: string }[]>([
     { src: 'assets/images/svg/angular-icon.svg', description: 'Angular' },
     { src: 'assets/images/svg/spring-3.svg', description: 'Java Spring' },
     { src: 'assets/images/svg/bootstrap-5-1.svg', description: 'Bootstrap' },
@@ -24,9 +61,10 @@ export class AppComponent {
     },
     { src: 'assets/images/svg/gitignoreio-1.svg', description: 'Git' },
     { src: 'assets/images/svg/jenkins-1.svg', description: 'Jenkins' },
-  ];
+  ]);
 
   contactForm: FormGroup;
+
   constructor() {
     this.contactForm = new FormGroup<{
       name: FormControl<string | null>;
@@ -49,15 +87,14 @@ export class AppComponent {
     });
   }
 
-  toggleNavbar() {
-    this.showMenu = !this.showMenu;
+  ngOnInit() {
+    this.sections = document.querySelectorAll('section');
   }
 
   contactFormSubmit(form: FormGroup) {
-    this.processing = true;
+    this.processing.set(true);
     setTimeout(() => {
-      this.processing = false
+      this.processing.set(false);
     }, 5000);
-    debugger;
   }
 }
