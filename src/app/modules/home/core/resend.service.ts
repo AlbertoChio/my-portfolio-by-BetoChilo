@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { concatMap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
-const RESEND_API = '/emails';
+const RESEND_API = 'https://api.resend.com/email';
 
 @Injectable({
   providedIn: 'root',
