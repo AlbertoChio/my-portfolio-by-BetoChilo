@@ -1,0 +1,35 @@
+<nav class="bg-white shadow dark:bg-gray-950 dark:shadow-black">
+    <div class="mx-auto px-2">
+        <div class="flex h-16 items-center justify-between">
+            <div class="flex items-center">
+                <div class="">
+                    <div class="ml-2 flex max-w-[90vw] items-baseline space-x-4 overflow-x-auto sm:overflow-x-hidden">
+                        <a class="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-gray-800 dark:hover:text-white [&[activeLink]]:bg-slate-500 [&[activeLink]]:text-gray-100"
+                            [attr.activeLink]="currentSection() === 'sobre-mi' ? '' : null" href="#sobre-mi">
+                            Sobre mí
+                        </a>
+                        <a class="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-gray-800 dark:hover:text-white [&[activeLink]]:bg-slate-500 [&[activeLink]]:text-gray-100"
+                            [attr.activeLink]="currentSection() === 'techs' ? '' : null" href="#techs">
+                            Técnologías
+                        </a>
+                        <a class="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-gray-800 dark:hover:text-white [&[activeLink]]:bg-slate-500 [&[activeLink]]:text-gray-100"
+                            [attr.activeLink]="currentSection() === 'experiencia' ? '' : null" href="#experiencia">
+                            Experiencia
+                        </a>
+                        <a class="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-gray-800 dark:hover:text-white [&[activeLink]]:bg-slate-500 [&[activeLink]]:text-gray-100"
+                            [attr.activeLink]="currentSection() === 'contacto' ? '' : null" href="#contacto">
+                            Contacto
+                        </a>
+                        <button class="flex align-middle transition-transform hover:scale-125"
+                            (click)="themeService.darkMode.set(!themeService.darkMode())">
+                            <span *ngIf="!themeService.darkMode()">
+                                <i class="fa-solid fa-moon dark:text-white"></i></span>
+                            <span *ngIf="themeService.darkMode()">
+                                <i class="fa-solid fa-lightbulb dark:text-white"></i></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

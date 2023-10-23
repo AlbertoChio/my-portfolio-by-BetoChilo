@@ -1,0 +1,181 @@
+<header class="sticky left-0 right-0 top-0 z-10">
+    <app-header></app-header>
+  </header>
+  
+  <main>
+    <section id="sobre-mi"
+      class="mx-auto flex content-center items-center justify-center bg-slate-100 py-16 dark:bg-slate-900">
+      <div class="container">
+        <div class="flex flex-wrap items-center">
+          <div class="ml-auto mr-auto w-full px-4 lg:w-8/12">
+            <div class="text-center sm:text-left">
+              <h1 class="text-center text-2xl font-semibold text-gray-950 dark:text-slate-50 md:text-5xl">
+                <span>Alberto Chio
+                  <a class="text-xl md:text-3xl" target="_blank" rel="noopener noreferrer"
+                    href="https://mx.linkedin.com/in/alberto-chio-lopez-3a74ba199">@BetoChiLo</a>
+                </span>
+              </h1>
+              <p class="mt-6 text-base text-gray-800 dark:text-slate-100 md:text-xl">
+                Hola a todos soy un desarrollador full stack con más de 3 años de
+                experiencia, enfocado a front end. <br />
+                <br />
+                <small>¡Puedes aportar ideas o PoCs a desarrollar en la sección de
+                  <a href="#contacto" class="underline">contacto</a>!</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="techs" class="pb-26 bg-slate-200 pt-20 dark:bg-slate-800">
+      <h3 class="text-center text-2xl font-semibold text-gray-950 dark:text-slate-50 md:text-4xl">
+        Centrado en las tecnologías:
+      </h3>
+      <div class="container mx-auto px-4 pt-6">
+        <div class="flex flex-wrap justify-center">
+          <ng-container *ngFor="let card of cards()">
+            <div class="w-5/12 px-4 pt-6 text-center duration-200 hover:-translate-y-6 sm:w-3/12">
+              <div
+                class="mb-8 flex w-full min-w-0 flex-col break-words rounded-lg bg-white shadow-lg dark:dark:bg-slate-500">
+                <div class="card flex flex-col items-center justify-center self-center pt-5">
+                  <div class="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-full p-2 dark:bg-white">
+                    <img [src]="card.src" />
+                  </div>
+  
+                  <div class="container">
+                    <h6 data-tooltip-target="tooltip-default"
+                      class="text-base font-semibold dark:text-slate-100 md:text-xl">
+                      {{ card.description }}
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </section>
+    <section id="experiencia" class="mb-26 bg-slate-200 pt-20 dark:bg-slate-800">
+      <h3 class="text-center text-2xl font-semibold text-gray-950 dark:text-slate-50 md:text-4xl">
+        Mi experiencia laboral:
+      </h3>
+      <div class="container mx-auto w-6/12 px-4 pt-10">
+        <ol
+          class="border-l border-neutral-300 dark:border-neutral-500 md:flex md:justify-between md:border-l-0 md:border-t">
+          <li>
+            <div class="flex-start flex items-center pt-2 md:block md:pt-0">
+              <div
+                class="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-neutral-300 dark:bg-neutral-500 md:-mt-[5px] md:ml-0 md:mr-0">
+              </div>
+              <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-300">
+                08.2018
+              </p>
+            </div>
+            <div class="ml-4 mt-2 pb-5 md:ml-0">
+              <h4 class="mb-1.5 text-xl dark:text-slate-100 md:text-2xl">
+                Xpertal
+              </h4>
+            </div>
+          </li>
+  
+          <!--Second item-->
+          <li>
+            <div class="flex-start flex items-center pt-2 md:block md:pt-0">
+              <div
+                class="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-neutral-300 dark:bg-neutral-500 md:-mt-[5px] md:ml-0 md:mr-0">
+              </div>
+              <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-300">
+                02.2021
+              </p>
+            </div>
+            <div class="ml-4 mt-2 pb-5 md:ml-0">
+              <h4 class="mb-1.5 text-xl dark:text-slate-100 md:text-2xl">
+                ASG Advisory Services
+              </h4>
+            </div>
+          </li>
+  
+          <li>
+            <div class="flex-start flex items-center pt-2 md:block md:pt-0">
+              <div
+                class="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-neutral-300 dark:bg-neutral-500 md:-mt-[5px] md:ml-0 md:mr-0">
+              </div>
+              <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-300">
+                02.2023
+              </p>
+            </div>
+            <div class="ml-4 mt-2 pb-5 md:ml-0">
+              <h4 class="mb-1.5 text-xl dark:text-slate-100 md:text-2xl">
+                Minsait
+              </h4>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+  
+    <section id="contacto">
+      <div class="min-h-screen bg-slate-200 px-6 py-32 dark:bg-slate-800 lg:px-8">
+        <div class="mx-auto max-w-2xl">
+          <h3 class="text-center text-2xl font-semibold text-gray-950 dark:text-slate-50 md:text-4xl">
+            Contacto
+          </h3>
+        </div>
+        <form [formGroup]="contactForm" (ngSubmit)="contactFormSubmit(contactForm)"
+          class="mx-auto mt-16 max-w-xl sm:mt-20">
+          <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label for="name"
+                class="block text-sm font-semibold leading-6 text-gray-900 dark:text-slate-100">Nombre</label>
+              <div class="mt-2.5">
+                <input type="text" formControlName="name" name="name" id="name" autocomplete="name" [ngClass]="
+                    contactForm.controls['name'].invalid
+                      ? 'ring-red-400'
+                      : 'ring-gray-300'
+                  "
+                  class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset placeholder:text-gray-400 sm:text-sm sm:leading-6" />
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="email"
+                class="block text-sm font-semibold leading-6 text-gray-900 dark:text-slate-100">Correo</label>
+              <div class="mt-2.5">
+                <input type="email" formControlName="email" name="email" id="email" autocomplete="email" [ngClass]="
+                    contactForm.controls['email'].invalid
+                      ? 'ring-red-400'
+                      : 'ring-gray-300'
+                  "
+                  class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset placeholder:text-gray-400 sm:text-sm sm:leading-6" />
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="mensaje"
+                class="block text-sm font-semibold leading-6 text-gray-900 dark:text-slate-100">Mensaje</label>
+              <div class="mt-2.5">
+                <textarea name="mensaje" formControlName="message" id="mensaje" rows="4" [ngClass]="
+                    contactForm.controls['message'].invalid
+                      ? 'ring-red-400'
+                      : 'ring-gray-300'
+                  "
+                  class="block max-h-[100px] min-h-[80px] w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10">
+          
+            <button type="submit" [disabled]="contactForm.invalid || processing()"
+              class="flex w-full justify-center rounded-md px-3.5 py-2.5 text-center text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:bg-slate-400 disabled:text-gray-200 [&:not(:disabled)]:bg-slate-500 [&:not(:disabled)]:text-gray-100 [&:not(:disabled)]:hover:bg-slate-600 [&:not(:disabled)]:focus-visible:outline-slate-500">
+              <svg *ngIf="processing()" class="h-5 w-5 animate-spin" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z">
+                </path>
+              </svg>
+  
+              {{ !processing() ? "Enviar" : null }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
